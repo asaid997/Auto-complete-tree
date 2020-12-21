@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" media="screen,projection" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="div-container"> -->
+    <div class="row">
+        <p class="col offset-l3">Type "a" or "m" and continue narrowing the search</p>
+        <input id="predict-input" class="col l6 offset-l3">
+        <div id="predictions-container">
+
+        </div>
+    </div>
+    <!-- </div> -->
+
+
+    <script id="predictions-template" type="text/x-handlebars-template">
+        <div class="col l6 offset-l3 z-depth-1">
+            {{#each words}}
+            <div class=""> {{this}}</div>
+            {{/each}}
+        </div>
+    </script>
+
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="tree.js"></script>
+    <script src="render.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

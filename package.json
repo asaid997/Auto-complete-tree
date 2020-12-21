@@ -1,11 +1,24 @@
 {
   "name": "autocomplete-tree",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://asaid997@github.com/asaid997/Auto-complete-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asaid997/Auto-complete-tree/issues"
+  },
+  "homepage": "https://github.com/asaid997/Auto-complete-tree#readme",
+  "description": "",
+  "dependencies": {
+    "handlebars": "^4.7.6",
+    "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0-rc.2"
+  }
 }
