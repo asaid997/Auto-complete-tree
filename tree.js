@@ -44,6 +44,8 @@ class Tree{
     }
     _print2(node,word){
         if(!node) return ''
+
+        const goToOthers = children => children.forEach()
         const nodeLetter = node.getInfo()
 
         const children = node.getChildren()
