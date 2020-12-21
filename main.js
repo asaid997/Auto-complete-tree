@@ -20,6 +20,6 @@ $("#predict-input").on('input', function() {
     const word = $("#predict-input").val()
 
     const predicition = tree.predictWord(word)
-    if (predicition.words.length)
+    if (predicition)
         renderer.showWords(tree.predictWord(word), word)
 });

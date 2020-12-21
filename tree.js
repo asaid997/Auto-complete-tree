@@ -22,7 +22,7 @@ class Tree {
             node.setEndOfWord()
             return
         }
-        const letter = word[0]
+        const letter = word[0].toLowerCase()
 
         const children = node.getChildren()
         children[letter] ? {} : children[letter] = new Node(letter)
@@ -41,22 +41,22 @@ class Tree {
         const children = node.getChildren()
         Object.keys(children).forEach(letter => this._predictWord(children[letter], arr, word))
     }
-    _findWord(node, wordToFind, word, arr) {
-        if (!node) return
-        word += node.getInfo()
-
-        if (word.toLowerCase() === wordToFind.toLowerCase()) arr.push(node)
-
-        const children = node.getChildren()
-        Object.keys(children).forEach(letter => this._findWord(children[letter], wordToFind, word, arr))
+    _findWord(node, wordToFind) {
+        for(let char of wordToFind.toLowerCase().split("")){
+            const child = node.getChildren()[char]
+            if(child)
+                node = child
+            else
+                return false
+        }
+        return node
     }
     predictWord(word) {
         if (word !== "" && word !== " ") {
             const predictionWords = []
-            const nodeToStart = []
-            this._findWord(this.head, word, "", nodeToStart)
-            if (nodeToStart.length) {
-                const children = nodeToStart[0].getChildren()
+            const nodeToStart = this._findWord(this.head, word)
+            if (nodeToStart) {
+                const children = nodeToStart.getChildren()
                 Object.keys(children).forEach(letter => this._predictWord(children[letter], predictionWords, word))
             }
             return { words: predictionWords }
