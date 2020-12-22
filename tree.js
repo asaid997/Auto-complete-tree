@@ -30,13 +30,14 @@ class Tree {
         this._addWord(word.slice(1), children[letter])
     }
     addWord = word => this._addWord(word, this.head)
+    addWords = words => words.forEach(word => this._addWord(word,this.head))
 
 
     _predictWord(node, arr, word) {
         if (!node) return
         word += node.getInfo()
 
-        if (node.getEndOfWord()) arr.push(`${word[0].toUpperCase()}${word.slice(1)}`)
+        if (node.getEndOfWord()) arr.push(word)
 
         const children = node.getChildren()
         Object.keys(children).forEach(letter => this._predictWord(children[letter], arr, word))
@@ -57,9 +58,9 @@ class Tree {
             const nodeToStart = this._findWord(this.head, word)
             if (nodeToStart) {
                 const children = nodeToStart.getChildren()
-                Object.keys(children).forEach(letter => this._predictWord(children[letter], predictionWords, word))
+                Object.keys(children).forEach(letter => this._predictWord(children[letter], predictionWords, ""))
             }
-            return { words: predictionWords }
+            return { word , predictionWords }
         }
     }
 

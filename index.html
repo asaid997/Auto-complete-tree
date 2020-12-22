@@ -24,8 +24,8 @@
 
     <script id="predictions-template" type="text/x-handlebars-template">
         <div class="col s6 offset-s3 z-depth-1">
-            {{#each words}}
-            <div class=""> {{this}}</div>
+            {{#each predictionWords}}
+                <div class="words"><span class="user-input"> {{../word}}</span><span class="prediction">{{this}}</span></div>
             {{/each}}
         </div>
     </script>

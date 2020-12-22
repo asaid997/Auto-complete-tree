@@ -1,25 +1,35 @@
-const tree = new Tree()
-tree.addWord("Artifacts")
-tree.addWord("Aliens")
-tree.addWord("Apple")
-tree.addWord("Apple mac")
-tree.addWord("Apple macbook pro")
-tree.addWord("Apple sucks")
-tree.addWord("Are we in the matrix?")
-tree.addWord("Microsoft")
-tree.addWord("Microsoft windows")
-tree.addWord("Microsoft windows vista sucks")
-tree.addWord("Master Band")
-tree.addWord("Matrix")
-
 const renderer = new Renderer()
+const tree = new Tree()
 
-$("#predict-input").on('input', function() {
-    $('#predictions-container').empty()
+const words = ["Artifacts","Aliens","Apple","Apple mac","Apple macbook pro","Apple sucks","Are we in the matrix?","Microsoft","Microsoft windows","Microsoft windows vista sucks","Master Band","Matrix"]
 
-    const word = $("#predict-input").val()
+tree.addWord("Artists")
+tree.addWords(words)
+
+const inputEle = $("#predict-input")
+const predictionsEle = $('#predictions-container')
+
+$(document).on('click',() => predictionsEle.empty())
+$("#predict-input").on('input', () => predict())
+$(document).on('click','.words',function() { choosePrediction($(this)) })
+
+
+
+
+function predict(){
+    predictionsEle.empty()
+
+    const word = inputEle.val()
 
     const predicition = tree.predictWord(word)
-    if (predicition)
+    if (predicition && predicition.predictionWords.length)
         renderer.showWords(tree.predictWord(word), word)
-});
+}
+function choosePrediction(element){
+    const userInput = element.find('.user-input').html()
+    const prediction = element.find('.prediction').html()
+
+    const word = `${userInput.slice(1)}${prediction}`
+    inputEle.empty().val(word)
+    predictionsEle.empty()
+}
