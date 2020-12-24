@@ -7,8 +7,6 @@
 .prediction{
     font-weight: bolder;
 }
-.words{
-}
 .words:hover{
     cursor: pointer;
     background-color: #b2dfdb;
